@@ -1,0 +1,23 @@
+---
+- name: Gather facts from all hosts
+  hosts: all
+  gather_facts: true
+  tasks: []
+
+
+
+- name: Configure backend servers
+  hosts: backends
+  become: true
+  roles:
+    - backend
+
+- name: Configure frontend nginx load balancer
+  hosts: frontend
+  become: true
+  vars:
+    backend1_private_ip: "{{ hostvars[groups['backends'][0]].ansible_default_ipv4.address }}"
+    backend2_private_ip: "{{ hostvars[groups['backends'][1]].ansible_default_ipv4.address }}"
+    backup_backend_private_ip: "{{ hostvars[groups['backends'][2]].ansible_default_ipv4.address }}"
+  roles:
+    - frontend

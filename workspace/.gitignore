@@ -1,0 +1,21 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.*
+.terraform.lock.hcl
+
+# AWS / SSH
+awscliv2.zip
+aws/
+*.pem
+*.key
+id_ed25519
+id_ed25519.pub
+
+# Ansible
+*.retry
+ansible/inventory/generated_hosts.ini
+ansible/*.log
+
+# OS
+.DS_Store

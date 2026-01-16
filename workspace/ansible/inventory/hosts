@@ -1,0 +1,12 @@
+[frontend]
+40.172.234.245
+
+[backends]
+3.29.231.23
+40.172.25.64
+158.252.32.162
+
+[all:vars]
+ansible_user = ec2-user
+ansible_ssh_private_key_file = ~/.ssh/id_ed25519
+ansible_python_interpreter=/usr/bin/python3
